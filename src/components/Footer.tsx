@@ -1,5 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
-import abhinavanLogo from "@/assets/abhinavan-symbol.svg";
+import abhinavanLogo from "@/assets/abhinavan-loader.png";
 
 const Footer = () => (
   <footer className="border-t border-border bg-background/50 backdrop-blur-sm">
@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <img src={abhinavanLogo} alt="Abhinavan" className="h-8 w-8 object-contain" />
+            <img src={abhinavanLogo} alt="Abhinavan" className="h-10 w-10 object-contain" />
             <span className="font-display text-lg font-bold tracking-[-0.03em] text-foreground">ABHINAVAN</span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
