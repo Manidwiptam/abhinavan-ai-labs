@@ -1,39 +1,18 @@
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { RevealSection } from "./ScrollReveal";
-import abhinavanLogo from "@/assets/abhinavan-logo.png";
+import abhinavanLogo from "@/assets/abhinavan-mark.png";
 import AICore from "./AICore";
 
 const HeroSection = () => {
   const reduceMotion = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start end", "end start"],
-  });
-
-  const energy = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
-  useEffect(() => {
-    const unsubscribe = energy.on("change", (latest) => {
-      const value = Math.min(1, Math.max(0, latest));
-      document.documentElement.style.setProperty("--hero-energy", value.toString());
-    });
-
-    document.documentElement.style.setProperty("--hero-energy", "1");
-    return () => {
-      unsubscribe();
-      document.documentElement.style.setProperty("--hero-energy", "1");
-    };
-  }, [energy]);
 
   const handleScroll = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section ref={heroRef} className="relative min-h-screen overflow-hidden section-padding pt-32">
+    <section className="relative min-h-screen overflow-hidden section-padding pt-32">
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -63,7 +42,7 @@ const HeroSection = () => {
           <RevealSection delay={100}>
             <div className="mb-6 inline-flex items-center gap-2 glass-card px-4 py-2 type-eyebrow">
               <Sparkles size={14} />
-              <span>Autonomous AI Lab | Research | Robotics</span>
+              <span>AI / ML / REINFORCEMENT LEARNING TEAM</span>
             </div>
           </RevealSection>
 

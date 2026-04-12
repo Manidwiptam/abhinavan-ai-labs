@@ -41,7 +41,6 @@
     --neon-cyan: 185 100% 50%;
     --glass-bg: 222 47% 8%;
     --glass-border: 217 33% 22%;
-    --hero-energy: 1;
 
     --sidebar-background: 222 47% 6%;
     --sidebar-foreground: 210 40% 96%;
@@ -116,71 +115,9 @@
   }
   .glass-card-hover:hover {
     box-shadow: 0 24px 72px rgba(8, 15, 36, 0.56),
-                0 0 38px rgba(59, 130, 246, calc(0.08 + var(--hero-energy) * 0.2)),
+                0 0 38px rgba(59, 130, 246, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.12);
     border-color: hsl(var(--neon-blue) / 0.4);
-  }
-
-  .navbar-shell {
-    background: rgba(7, 12, 27, 0.82);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 28px 80px rgba(6, 9, 23, 0.22);
-    backdrop-filter: blur(24px);
-    position: relative;
-  }
-
-  .navbar-shell::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0.75rem;
-    transform: translateX(-50%);
-    width: 5.5rem;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(56, 189, 248, 0.72), rgba(168, 85, 247, 0.45), rgba(56, 189, 248, 0.38));
-    opacity: calc(0.45 + var(--hero-energy) * 0.35);
-    pointer-events: none;
-  }
-
-  .navbar-link {
-    position: relative;
-    z-index: 10;
-    padding: 0.65rem 1rem;
-    transition: color 0.2s ease, background 0.2s ease;
-  }
-
-  .navbar-link::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    background: rgba(56, 189, 248, 0.1);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-
-  .navbar-link:hover::before,
-  .navbar-link-active::before {
-    opacity: calc(0.12 + var(--hero-energy) * 0.22);
-  }
-
-  .navbar-link-active {
-    color: var(--foreground);
-  }
-
-  .glass-card {
-    @apply relative overflow-hidden bg-card/35 backdrop-blur-2xl border rounded-2xl;
-    border-color: rgba(79, 147, 255, calc(0.18 + var(--hero-energy) * 0.16));
-    box-shadow: 0 14px 48px rgba(8, 15, 36, 0.42),
-                0 0 0 1px rgba(96, 165, 250, calc(0.04 + var(--hero-energy) * 0.06)),
-                inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  .timeline-beam {
-    background:
-      linear-gradient(180deg, rgba(56, 189, 248, 0) 0%, rgba(56, 189, 248, 0.55) 15%, rgba(139, 92, 246, 0.45) 55%, rgba(56, 189, 248, 0) 100%);
-    box-shadow: 0 0 18px rgba(59, 130, 246, calc(0.22 + var(--hero-energy) * 0.34));
-    opacity: calc(0.18 + var(--hero-energy) * 0.62);
   }
 
   .glass-shine::after {
