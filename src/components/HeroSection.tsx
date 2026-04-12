@@ -1,12 +1,8 @@
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { RevealSection } from "./ScrollReveal";
-import abhinavanLogo from "@/assets/abhinavan-mark.png";
 import AICore from "./AICore";
 
 const HeroSection = () => {
-  const reduceMotion = useReducedMotion();
-
   const handleScroll = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -27,18 +23,6 @@ const HeroSection = () => {
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
         <div className="text-center lg:text-left">
-          <RevealSection>
-            <div className="mb-8 flex justify-center lg:justify-start">
-              <motion.img
-                src={abhinavanLogo}
-                alt="Abhinavan Logo"
-                className="h-24 w-24 object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.4)] md:h-32 md:w-32"
-                animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
-                transition={reduceMotion ? undefined : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </div>
-          </RevealSection>
-
           <RevealSection delay={100}>
             <div className="mb-6 inline-flex items-center gap-2 glass-card px-4 py-2 type-eyebrow">
               <Sparkles size={14} />
