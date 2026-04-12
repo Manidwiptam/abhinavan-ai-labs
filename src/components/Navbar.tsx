@@ -149,7 +149,7 @@ const Navbar = () => {
           <img
             src={abhinavanLogo}
             alt="Abhinavan"
-            className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10"
           />
           <span className="font-display text-base font-bold tracking-[-0.03em] text-foreground sm:text-lg">
             ABHINAVAN
