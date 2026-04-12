@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Send, Mail } from "lucide-react";
 import { RevealSection } from "./ScrollReveal";
+import MotionCard from "./MotionCard";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -15,67 +16,72 @@ const ContactSection = () => {
     <section id="contact" className="section-padding relative">
       <div className="container mx-auto max-w-4xl">
         <RevealSection>
-          <div className="text-center mb-14">
+          <div className="mb-14 text-center">
             <p className="type-eyebrow mb-3">Get In Touch</p>
             <h2 className="type-section-heading mb-4">
-              Let's Build the Future <span className="text-gradient">with AI</span>
+              Let&apos;s Build the Future <span className="text-gradient">with AI</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Whether it's a hackathon collab, research partnership, or just a chat about AI — we're always open.
+            <p className="mx-auto max-w-xl text-lg text-muted-foreground">
+              Whether it&apos;s a hackathon collab, research partnership, or just a chat about AI, we&apos;re always open.
             </p>
           </div>
         </RevealSection>
 
         <RevealSection delay={100}>
-          <form onSubmit={handleSubmit} className="glass-card p-8 md:p-10 space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Name</label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors font-sans"
-                  placeholder="Your name"
-                />
+          <MotionCard className="p-8 md:p-10">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-foreground">Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-foreground">Email</label>
+                  <input
+                    type="email"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                    placeholder="you@example.com"
+                  />
+                </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                <input
-                  type="email"
+                <label className="mb-2 block text-sm font-medium text-foreground">Message</label>
+                <textarea
                   required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors font-sans"
-                  placeholder="you@example.com"
+                  rows={5}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="w-full resize-none rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                  placeholder="Tell us about your idea or project..."
                 />
               </div>
-            </div>
-            <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
-              <textarea
-                required
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none font-sans"
-                placeholder="Tell us about your idea or project..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground type-button rounded-xl hover:opacity-90 transition-opacity glow-blue"
-            >
-              <Send size={18} />
-              Send Message
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-primary-foreground type-button transition-opacity hover:opacity-90 glow-blue"
+              >
+                <Send size={18} />
+                Send Message
+              </button>
+            </form>
+          </MotionCard>
         </RevealSection>
 
         <RevealSection delay={200}>
           <div className="mt-8 text-center">
-            <a href="mailto:team.abhinavan@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm">
+            <a
+              href="mailto:team.abhinavan@gmail.com"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
               <Mail size={16} />
               team.abhinavan@gmail.com
             </a>

@@ -1,5 +1,6 @@
 import { Brain, Cpu, Rocket, Target } from "lucide-react";
 import { RevealSection } from "./ScrollReveal";
+import MotionCard from "./MotionCard";
 
 const cards = [
   {
@@ -43,13 +44,13 @@ const AboutSection = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map((card, i) => (
           <RevealSection key={card.title} delay={i * 100}>
-            <div className="glass-card-hover p-6 h-full group">
+            <MotionCard className="p-6 h-full group">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <card.icon size={24} className="text-primary" />
               </div>
               <h3 className="type-card-title text-lg mb-2 text-foreground">{card.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
-            </div>
+            </MotionCard>
           </RevealSection>
         ))}
       </div>

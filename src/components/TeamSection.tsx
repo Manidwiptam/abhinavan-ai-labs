@@ -3,6 +3,8 @@ import { RevealSection } from "./ScrollReveal";
 import manidwiptamImg from "@/assets/manidwiptam.png";
 import rohanImg from "@/assets/rohan.png";
 import soumyadeepImg from "@/assets/soumyadeep.webp";
+import MotionCard from "./MotionCard";
+import TechChip from "./TechChip";
 
 const members = [
   {
@@ -43,29 +45,27 @@ const TeamSection = () => (
           Meet <span className="text-gradient">Team Abhinavan</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mb-14">
-          Three minds, one mission — pushing the boundaries of AI innovation.
+          Three minds, one mission, pushing the boundaries of AI innovation.
         </p>
       </RevealSection>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {members.map((m, i) => (
           <RevealSection key={m.name} delay={i * 150}>
-            <div className="glass-card-hover group relative overflow-hidden">
-              {/* Photo */}
-              <div className="aspect-square relative overflow-hidden">
+            <MotionCard className="group relative overflow-hidden">
+              <div className="relative aspect-square overflow-hidden">
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+                  className="h-full w-full scale-110 object-cover grayscale transition-all duration-700 group-hover:scale-100 group-hover:grayscale-0"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                {/* Social links overlay */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-85" />
+                <div className="absolute bottom-4 left-0 right-0 flex translate-y-4 justify-center gap-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   <a
                     href={m.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-foreground/10 backdrop-blur-sm hover:bg-primary transition-colors"
+                    className="rounded-full bg-foreground/10 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary"
                   >
                     <Github size={18} />
                   </a>
@@ -73,29 +73,25 @@ const TeamSection = () => (
                     href={m.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-foreground/10 backdrop-blur-sm hover:bg-primary transition-colors"
+                    className="rounded-full bg-foreground/10 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary"
                   >
                     <Linkedin size={18} />
                   </a>
                 </div>
               </div>
 
-              {/* Info */}
               <div className="p-6">
                 <h3 className="type-card-title text-xl mb-1 text-foreground">{m.name}</h3>
-                <p className="type-tech-chip text-primary mb-4 uppercase">{m.role}</p>
+                <p className="type-tech-chip mb-4 uppercase text-primary">{m.role}</p>
                 <div className="flex flex-wrap gap-2">
                   {m.expertise.map((e) => (
-                    <span
-                      key={e}
-                      className="type-tech-chip px-2.5 py-1 rounded-full border border-border text-muted-foreground"
-                    >
+                    <TechChip key={e} className="rounded-full px-2.5 py-1 text-muted-foreground type-tech-chip">
                       {e}
-                    </span>
+                    </TechChip>
                   ))}
                 </div>
               </div>
-            </div>
+            </MotionCard>
           </RevealSection>
         ))}
       </div>

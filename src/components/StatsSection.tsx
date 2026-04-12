@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { RevealSection } from "./ScrollReveal";
+import MotionCard from "./MotionCard";
 
 const stats = [
   { label: "Hackathons", value: 1, suffix: "+" },
@@ -9,37 +11,38 @@ const stats = [
 ];
 
 const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string }) => {
-  const [count, setCount] = useState(0);
+  const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.7 });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (value) => Math.round(value));
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          let start = 0;
-          const duration = 2000;
-          const step = (ts: number) => {
-            if (!start) start = ts;
-            const progress = Math.min((ts - start) / duration, 1);
-            setCount(Math.floor(progress * target));
-            if (progress < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-          obs.disconnect();
+    if (!inView) return;
+
+    const controls = animate(count, target, {
+      duration: reduceMotion ? 0.35 : 2.1,
+      ease: reduceMotion ? "linear" : [0.22, 1, 0.36, 1],
+      onComplete: () => {
+        if (!reduceMotion) {
+          animate(count, target, {
+            type: "spring",
+            stiffness: 220,
+            damping: 14,
+            mass: 0.5,
+          });
         }
       },
-      { threshold: 0.5 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [target]);
+    });
+
+    return () => controls.stop();
+  }, [count, inView, reduceMotion, target]);
 
   return (
-    <div ref={ref} className="font-display text-4xl md:text-5xl font-extrabold tracking-[-0.05em] text-gradient">
-      {count}{suffix}
-    </div>
+    <motion.div ref={ref} className="font-display text-4xl font-extrabold tracking-[-0.05em] text-gradient md:text-5xl">
+      {rounded}
+      {suffix}
+    </motion.div>
   );
 };
 
@@ -53,13 +56,13 @@ const StatsSection = () => (
         </h2>
       </RevealSection>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <RevealSection key={stat.label} delay={i * 100}>
-            <div className="glass-card-hover p-8 text-center">
+            <MotionCard className="p-8 text-center">
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <p className="type-tech-chip text-muted-foreground mt-3 uppercase">{stat.label}</p>
-            </div>
+              <p className="type-tech-chip mt-3 uppercase text-muted-foreground">{stat.label}</p>
+            </MotionCard>
           </RevealSection>
         ))}
       </div>

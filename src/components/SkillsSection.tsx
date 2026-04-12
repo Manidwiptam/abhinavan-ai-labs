@@ -1,4 +1,5 @@
 import { RevealSection } from "./ScrollReveal";
+import TechChip from "./TechChip";
 
 const skills = [
   "Python", "PyTorch", "TensorFlow", "OpenAI Gym", "Hugging Face",
@@ -22,14 +23,13 @@ const SkillsSection = () => (
 
       <RevealSection delay={100}>
         <div className="flex flex-wrap justify-center gap-3">
-          {skills.map((skill, i) => (
-            <div
+          {skills.map((skill) => (
+            <TechChip
               key={skill}
-              className="glass-card-hover px-5 py-3 type-tech-chip text-foreground cursor-default"
-              style={{ animationDelay: `${i * 50}ms` }}
+              className="px-5 py-3 text-foreground type-tech-chip"
             >
               {skill}
-            </div>
+            </TechChip>
           ))}
         </div>
       </RevealSection>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { RevealSection } from "./ScrollReveal";
+import MotionCard from "./MotionCard";
+import TechChip from "./TechChip";
 
 const filters = ["All", "RL", "ML", "Hackathons", "Research"];
 
@@ -57,12 +59,12 @@ const ProjectsSection = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {filtered.map((project, i) => (
             <RevealSection key={project.title} delay={i * 100}>
-              <div className="glass-card-hover p-6 group">
+              <MotionCard className="p-6 group">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 type-tech-chip bg-primary/10 text-primary rounded-md">
+                    <TechChip key={tag} className="px-2.5 py-1 text-primary type-tech-chip">
                       {tag}
-                    </span>
+                    </TechChip>
                   ))}
                 </div>
                 <h3 className="type-card-title text-xl mb-3 text-foreground">{project.title}</h3>
@@ -70,7 +72,9 @@ const ProjectsSection = () => {
                 <p className="type-tech-chip text-primary/70 mb-4">{project.metrics}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tech.map((t) => (
-                    <span key={t} className="px-2 py-1 type-tech-chip bg-muted rounded-md text-muted-foreground">{t}</span>
+                    <TechChip key={t} className="px-2 py-1 text-muted-foreground type-tech-chip">
+                      {t}
+                    </TechChip>
                   ))}
                 </div>
                 <div className="flex gap-3">
@@ -91,7 +95,7 @@ const ProjectsSection = () => {
                     <ExternalLink size={16} /> Live Demo
                   </a>
                 </div>
-              </div>
+              </MotionCard>
             </RevealSection>
           ))}
         </div>

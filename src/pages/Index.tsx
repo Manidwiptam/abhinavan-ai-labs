@@ -10,7 +10,7 @@ import StatsSection from "@/components/StatsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ParticleGrid from "@/components/ParticleGrid";
-import MurmurationCursor from "@/components/MurmurationCursor";
+import CursorSpotlight from "@/components/CursorSpotlight";
 import ScrollProgress from "@/components/ScrollProgress";
 import LoadingScreen from "@/components/LoadingScreen";
 
@@ -24,7 +24,7 @@ const Index = () => {
       <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
         <ScrollProgress />
         <ParticleGrid />
-        <MurmurationCursor />
+        <CursorSpotlight />
         <Navbar />
         <HeroSection />
         <AboutSection />
