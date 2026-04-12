@@ -143,13 +143,13 @@ const Navbar = () => {
             event.preventDefault();
             scrollToTop();
           }}
-          className="group relative z-10 inline-flex items-center gap-2.5"
+          className="group relative z-10 inline-flex items-center gap-1.5"
           aria-label="Scroll to top"
         >
           <img
             src={abhinavanLogo}
             alt="Abhinavan"
-            className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10"
+            className="h-11 w-11 object-contain transition-transform duration-300 group-hover:scale-110"
           />
           <span className="font-display text-base font-bold tracking-[-0.03em] text-foreground sm:text-lg">
             ABHINAVAN
