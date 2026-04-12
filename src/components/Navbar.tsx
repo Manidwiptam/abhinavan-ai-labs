@@ -1,6 +1,16 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Menu } from "lucide-react";
 import abhinavanLogo from "@/assets/abhinavan-mark.png";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -10,90 +20,259 @@ const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Stats", href: "#stats" },
   { label: "Contact", href: "#contact" },
-];
+] as const;
+
+const FLOATING_OFFSET = 104;
 
 const Navbar = () => {
+  const reduceMotion = useReducedMotion();
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<(typeof navLinks)[number]["href"]>("#about");
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = (href: string) => {
+  useEffect(() => {
+    const setFromHash = () => {
+      const hash = window.location.hash as (typeof navLinks)[number]["href"];
+      if (navLinks.some((link) => link.href === hash)) {
+        setActiveHref(hash);
+      }
+    };
+
+    setFromHash();
+    window.addEventListener("hashchange", setFromHash);
+    return () => window.removeEventListener("hashchange", setFromHash);
+  }, []);
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const markerPosition = window.scrollY + FLOATING_OFFSET + 40;
+      const pageBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+
+      if (pageBottom) {
+        setActiveHref(navLinks[navLinks.length - 1].href);
+        return;
+      }
+
+      let currentSection = navLinks[0].href;
+      for (const link of navLinks) {
+        const section = document.querySelector<HTMLElement>(link.href);
+        if (!section) {
+          continue;
+        }
+
+        if (markerPosition >= section.offsetTop) {
+          currentSection = link.href;
+        } else {
+          break;
+        }
+      }
+
+      setActiveHref((previous) => (previous === currentSection ? previous : currentSection));
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
+  const scrollToSection = (href: (typeof navLinks)[number]["href"]) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
+    setActiveHref(href);
+
+    const targetSection = document.querySelector<HTMLElement>(href);
+    if (!targetSection) {
+      return;
+    }
+
+    const targetTop = targetSection.getBoundingClientRect().top + window.scrollY - FLOATING_OFFSET;
+    window.history.replaceState(null, "", href);
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  };
+
+  const scrollToTop = () => {
+    setMobileOpen(false);
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-lg shadow-primary/5"
-          : "bg-transparent"
-      }`}
+    <motion.nav
+      className="fixed left-0 right-0 top-4 z-50 px-3 sm:px-6"
+      initial={false}
+      animate={{ y: 0, opacity: 1 }}
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
-        <a href="#" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src={abhinavanLogo} alt="Abhinavan" className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110" />
-          <span className="font-display text-lg font-bold tracking-[-0.03em] text-foreground">ABHINAVAN</span>
+      <div
+        className={cn(
+          "relative mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 overflow-hidden rounded-full border-[0.5px] border-white/35 px-4 sm:px-5",
+          scrolled
+            ? "bg-transparent backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.24),inset_0_-1px_0_rgba(255,255,255,0.04),9px_9px_24px_rgba(2,6,23,0.34),-8px_-8px_20px_rgba(255,255,255,0.06)]"
+            : "bg-transparent backdrop-blur-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(255,255,255,0.03),7px_7px_20px_rgba(2,6,23,0.3),-6px_-6px_16px_rgba(255,255,255,0.05)]",
+        )}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/14 via-white/[0.05] to-white/[0.01]"
+        />
+        {!reduceMotion && (
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+            animate={{ x: ["0%", "260%"] }}
+            transition={{ duration: 5.8, repeat: Infinity, ease: "linear", repeatDelay: 1.2 }}
+          />
+        )}
+        <a
+          href="#"
+          onClick={(event) => {
+            event.preventDefault();
+            scrollToTop();
+          }}
+          className="group relative z-10 inline-flex items-center gap-2.5"
+          aria-label="Scroll to top"
+        >
+          <img
+            src={abhinavanLogo}
+            alt="Abhinavan"
+            className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+          <span className="font-display text-base font-bold tracking-[-0.03em] text-foreground sm:text-lg">
+            ABHINAVAN
+          </span>
         </a>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleClick(link.href)}
-              className="px-3 py-2 text-sm font-sans font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-            >
-              {link.label}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full" />
-            </button>
-          ))}
-          <button
-            onClick={() => handleClick("#contact")}
-            className="ml-3 px-5 py-2 text-sm type-button bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity glow-blue"
+        <NavigationMenu className="relative z-10 hidden md:flex">
+          <NavigationMenuList className="gap-1">
+            {navLinks.map((link) => (
+              <NavigationMenuItem key={link.href}>
+                <NavigationMenuLink asChild>
+                  <a
+                    href={link.href}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    aria-current={activeHref === link.href ? "page" : undefined}
+                    className={cn(
+                      "relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors",
+                      activeHref === link.href ? "text-white" : "text-white/70 hover:text-white",
+                    )}
+                  >
+                    {link.label}
+                    {activeHref === link.href && (
+                      <motion.span
+                        layoutId="active-nav-underline"
+                        className="absolute inset-x-2 -bottom-[3px] h-0.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                        transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                      />
+                    )}
+                  </a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <div className="relative z-10 hidden md:block">
+          <Button
+            onClick={() => scrollToSection("#contact")}
+            className="rounded-full px-5 type-button glow-blue"
           >
             Collaborate
-          </button>
+          </Button>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
-          <div className="flex flex-col py-4 px-6 gap-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleClick(link.href)}
-                className="py-3 text-sm font-sans font-medium text-muted-foreground hover:text-foreground text-left transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
-            <button
-              onClick={() => handleClick("#contact")}
-              className="mt-2 px-5 py-2.5 text-sm type-button bg-primary text-primary-foreground rounded-lg"
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative z-10 rounded-full border border-white/30 bg-white/[0.04] text-foreground hover:bg-white/15 md:hidden"
+              aria-label="Open navigation menu"
             >
-              Collaborate
-            </button>
-          </div>
-        </div>
-      )}
-    </nav>
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="w-[86%] border-white/15 bg-background/90 pt-12 backdrop-blur-2xl sm:max-w-sm"
+          >
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <AnimatePresence mode="wait">
+              {mobileOpen && (
+                <motion.div
+                  key="mobile-nav"
+                  initial={reduceMotion ? undefined : "hidden"}
+                  animate={reduceMotion ? undefined : "visible"}
+                  exit={reduceMotion ? undefined : "hidden"}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+                    },
+                  }}
+                  className="mt-6 flex flex-col gap-2"
+                >
+                  {navLinks.map((link) => (
+                    <motion.a
+                      key={link.href}
+                      href={link.href}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        scrollToSection(link.href);
+                      }}
+                      className={cn(
+                        "rounded-xl px-4 py-3.5 text-base font-medium transition-colors",
+                        activeHref === link.href
+                          ? "bg-white/10 text-white"
+                          : "text-white/70 hover:bg-white/5 hover:text-white",
+                      )}
+                      variants={{
+                        hidden: { x: 18, opacity: 0 },
+                        visible: { x: 0, opacity: 1 },
+                      }}
+                    >
+                      {link.label}
+                    </motion.a>
+                  ))}
+
+                  <motion.div
+                    variants={{
+                      hidden: { y: 10, opacity: 0 },
+                      visible: { y: 0, opacity: 1 },
+                    }}
+                    className="pt-2"
+                  >
+                    <Button
+                      onClick={() => scrollToSection("#contact")}
+                      className="w-full rounded-xl py-6 text-base type-button"
+                    >
+                      Collaborate
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </motion.nav>
   );
 };
 
