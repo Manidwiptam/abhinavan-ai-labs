@@ -1,5 +1,5 @@
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { RevealSection } from "./ScrollReveal";
 import MotionCard from "./MotionCard";
 
@@ -14,34 +14,38 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   const reduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.7 });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (value) => Math.round(value));
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
 
-    const controls = animate(count, target, {
+    const controls = animate(0, target, {
       duration: reduceMotion ? 0.35 : 2.1,
       ease: reduceMotion ? "linear" : [0.22, 1, 0.36, 1],
+      onUpdate: (value) => {
+        setCount(Math.round(value));
+      },
       onComplete: () => {
         if (!reduceMotion) {
-          animate(count, target, {
+          animate(target + 0.8, target, {
             type: "spring",
             stiffness: 220,
             damping: 14,
             mass: 0.5,
+            onUpdate: (value) => {
+              setCount(Math.round(value));
+            },
           });
         }
       },
     });
 
     return () => controls.stop();
-  }, [count, inView, reduceMotion, target]);
+  }, [inView, reduceMotion, target]);
 
   return (
     <motion.div ref={ref} className="font-display text-4xl font-extrabold tracking-[-0.05em] text-gradient md:text-5xl">
-      {rounded}
-      {suffix}
+      {count}{suffix}
     </motion.div>
   );
 };
