@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import abhinavanLogo from "@/assets/abhinavan-logo.png";
+import abhinavanLogo from "@/assets/abhinavan-mark.png";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);

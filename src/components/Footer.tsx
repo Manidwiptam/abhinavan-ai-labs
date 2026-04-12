@@ -1,5 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
-import abhinavanLogo from "@/assets/abhinavan-logo.png";
+import abhinavanLogo from "@/assets/abhinavan-mark.png";
 
 const Footer = () => (
   <footer className="border-t border-border bg-background/50 backdrop-blur-sm">

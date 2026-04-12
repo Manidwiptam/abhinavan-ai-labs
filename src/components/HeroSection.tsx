@@ -1,6 +1,6 @@
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { RevealSection } from "./ScrollReveal";
-import abhinavanLogo from "@/assets/abhinavan-logo.png";
+import abhinavanLogo from "@/assets/abhinavan-mark.png";
 
 const HeroSection = () => {
   const handleScroll = (id: string) => {

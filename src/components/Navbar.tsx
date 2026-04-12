@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import abhinavanLogo from "@/assets/abhinavan-logo.png";
+import abhinavanLogo from "@/assets/abhinavan-mark.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
