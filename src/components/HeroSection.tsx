@@ -1,10 +1,10 @@
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { RevealSection } from "./ScrollReveal";
-import abhinavanLogo from "@/assets/abhinavan-mark.png";
+import abhinavanLogo from "@/assets/abhinavan-symbol.svg";
 import AICore from "./AICore";
 
-const HeroSection = () => {
+const HeroSection = () => {"
   const reduceMotion = useReducedMotion();
 
   const handleScroll = (id: string) => {

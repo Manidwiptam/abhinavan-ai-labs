@@ -1,7 +1,7 @@
 import { Github, Linkedin } from "lucide-react";
-import abhinavanLogo from "@/assets/abhinavan-mark.png";
+import abhinavanLogo from "@/assets/abhinavan-symbol.svg";
 
-const Footer = () => (
+const Footer = () => ("
   <footer className="border-t border-border bg-background/50 backdrop-blur-sm">
     <div className="container mx-auto max-w-6xl py-12 px-4 md:px-8">
       <div className="grid md:grid-cols-3 gap-8">
