@@ -257,15 +257,6 @@
   }
 }
 
-@keyframes aurora-drift {
-  0%, 100% {
-    transform: translateX(-12%) translateY(0%);
-  }
-  50% {
-    transform: translateX(12%) translateY(5%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .glass-card-hover,
   .glass-card-hover:hover {
