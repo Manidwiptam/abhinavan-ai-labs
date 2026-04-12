@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import animatedLogo from "@/assets/animated-tech-logo-generation.mp4";
+import abhinavanLogo from "@/assets/abhinavan-logo.png";
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -28,15 +28,10 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         exiting ? "opacity-0" : "opacity-100"
       }`}
     >
-      <video
-        src={animatedLogo}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-label="Abhinavan animated logo"
-        className="w-24 h-24 mb-8 object-contain"
+      <img
+        src={abhinavanLogo}
+        alt="Abhinavan"
+        className="w-24 h-24 mb-8 animate-pulse object-contain"
       />
       <div className="w-48 h-1 bg-muted rounded-full overflow-hidden">
         <div
