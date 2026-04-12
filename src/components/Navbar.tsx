@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu } from "lucide-react";
-import abhinavanLogo from "@/assets/abhinavan-mark.png";
+import abhinavanLogo from "@/assets/abhinavan-loader.png";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
