@@ -4,7 +4,7 @@ import { RevealSection } from "./ScrollReveal";
 import abhinavanLogo from "@/assets/abhinavan-symbol.svg";
 import AICore from "./AICore";
 
-const HeroSection = () => {"
+const HeroSection = () => {
   const reduceMotion = useReducedMotion();
 
   const handleScroll = (id: string) => {
