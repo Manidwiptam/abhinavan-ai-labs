@@ -28,8 +28,8 @@ const AboutSection = () => (
   <section id="about" className="section-padding relative">
     <div className="container mx-auto max-w-6xl">
       <RevealSection>
-        <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">Who We Are</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <p className="type-eyebrow mb-3">Who We Are</p>
+        <h2 className="type-section-heading mb-6">
           An <span className="text-gradient">Always Building</span> Culture
         </h2>
         <p className="text-muted-foreground text-lg max-w-3xl mb-16 leading-relaxed">
@@ -47,7 +47,7 @@ const AboutSection = () => (
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                 <card.icon size={24} className="text-primary" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground">{card.title}</h3>
+              <h3 className="type-card-title text-lg mb-2 text-foreground">{card.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
             </div>
           </RevealSection>

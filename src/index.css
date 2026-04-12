@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -50,6 +50,10 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 18%;
     --sidebar-ring: 217 91% 60%;
+
+    --font-body: "Inter", sans-serif;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-tech: "JetBrains Mono", monospace;
   }
 }
 
@@ -59,17 +63,46 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+    line-height: 0.98;
   }
   code, pre {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-tech);
+  }
+  p, a, li, label, input, textarea {
+    font-family: var(--font-body);
   }
 }
 
 @layer utilities {
+  .type-eyebrow {
+    @apply font-mono text-[0.72rem] md:text-xs font-medium uppercase tracking-[0.28em] text-primary;
+  }
+
+  .type-section-heading {
+    @apply font-display text-3xl md:text-5xl font-bold tracking-[-0.045em] leading-[0.95];
+  }
+
+  .type-card-title {
+    @apply font-display font-semibold tracking-[-0.03em] leading-tight;
+  }
+
+  .type-button {
+    @apply font-display font-semibold tracking-[-0.025em];
+  }
+
+  .type-tech-chip {
+    @apply font-mono text-xs font-medium tracking-[0.08em];
+  }
+
   .glass-card {
     @apply bg-card/40 backdrop-blur-xl border border-glass-border rounded-2xl;
     box-shadow: 0 8px 32px 0 rgba(59, 130, 246, 0.08),

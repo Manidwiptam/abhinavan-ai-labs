@@ -31,14 +31,14 @@ const HeroSection = () => {
         </RevealSection>
 
         <RevealSection delay={100}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card text-xs font-mono text-primary mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card type-eyebrow mb-6">
             <Sparkles size={14} />
             <span>AI / ML / REINFORCEMENT LEARNING TEAM</span>
           </div>
         </RevealSection>
 
         <RevealSection delay={200}>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[1.1] mb-6 tracking-tight">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[0.92] tracking-[-0.065em] mb-6">
             Building the Future
             <br />
             <span className="text-gradient">with Intelligence</span>
@@ -46,7 +46,7 @@ const HeroSection = () => {
         </RevealSection>
 
         <RevealSection delay={300}>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-[1.75]">
             We are <span className="text-foreground font-semibold">Abhinavan</span> — a passionate AI innovation team
             dedicated to solving real-world problems through continuous research,
             experimentation, and hackathon participation.
@@ -57,7 +57,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => handleScroll("#projects")}
-              className="group flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-300 hover:opacity-90 glow-blue"
+              className="group flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground type-button rounded-xl transition-all duration-300 hover:opacity-90 glow-blue"
             >
               <Zap size={18} />
               Explore Projects
@@ -65,13 +65,13 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => handleScroll("#team")}
-              className="flex items-center gap-2 px-8 py-3.5 glass-card font-semibold text-foreground rounded-xl transition-all duration-300 hover:border-primary/40"
+              className="flex items-center gap-2 px-8 py-3.5 glass-card type-button text-foreground rounded-xl transition-all duration-300 hover:border-primary/40"
             >
               Meet the Team
             </button>
             <button
               onClick={() => handleScroll("#contact")}
-              className="flex items-center gap-2 px-8 py-3.5 border border-border font-semibold text-muted-foreground rounded-xl transition-all duration-300 hover:text-foreground hover:border-primary/40"
+              className="flex items-center gap-2 px-8 py-3.5 border border-border type-button text-muted-foreground rounded-xl transition-all duration-300 hover:text-foreground hover:border-primary/40"
             >
               Collaborate With Us
             </button>

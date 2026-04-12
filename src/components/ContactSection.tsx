@@ -16,8 +16,8 @@ const ContactSection = () => {
       <div className="container mx-auto max-w-4xl">
         <RevealSection>
           <div className="text-center mb-14">
-            <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">Get In Touch</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <p className="type-eyebrow mb-3">Get In Touch</p>
+            <h2 className="type-section-heading mb-4">
               Let's Build the Future <span className="text-gradient">with AI</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
@@ -36,7 +36,7 @@ const ContactSection = () => {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors font-sans"
                   placeholder="Your name"
                 />
               </div>
@@ -47,7 +47,7 @@ const ContactSection = () => {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors font-sans"
                   placeholder="you@example.com"
                 />
               </div>
@@ -59,13 +59,13 @@ const ContactSection = () => {
                 rows={5}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none font-sans"
                 placeholder="Tell us about your idea or project..."
               />
             </div>
             <button
               type="submit"
-              className="flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-xl hover:opacity-90 transition-opacity glow-blue"
+              className="flex items-center gap-2 px-8 py-3.5 bg-primary text-primary-foreground type-button rounded-xl hover:opacity-90 transition-opacity glow-blue"
             >
               <Send size={18} />
               Send Message

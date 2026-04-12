@@ -16,8 +16,8 @@ const HackathonSection = () => (
   <section id="hackathons" className="section-padding relative">
     <div className="container mx-auto max-w-6xl">
       <RevealSection>
-        <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">Our Journey</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <p className="type-eyebrow mb-3">Our Journey</p>
+        <h2 className="type-section-heading mb-6">
           Hackathon <span className="text-gradient">Timeline</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mb-14">
@@ -40,15 +40,15 @@ const HackathonSection = () => (
                   <div className="flex items-center gap-2 mb-3 text-primary">
                     <Trophy size={18} />
                     <Calendar size={14} />
-                    <span className="text-sm font-mono">{h.date}</span>
+                    <span className="type-tech-chip text-primary">{h.date}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-foreground">{h.name}</h3>
+                  <h3 className="type-card-title text-xl mb-2 text-foreground">{h.name}</h3>
                   <p className="text-sm text-muted-foreground mb-1">{h.organizer}</p>
                   <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{h.problem}</p>
                   <p className="text-sm font-medium text-primary mb-3">{h.achievement}</p>
                   <div className="flex flex-wrap gap-2">
                     {h.tech.map((t) => (
-                      <span key={t} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-md font-mono">{t}</span>
+                      <span key={t} className="px-2 py-1 type-tech-chip bg-primary/10 text-primary rounded-md">{t}</span>
                     ))}
                   </div>
                 </div>

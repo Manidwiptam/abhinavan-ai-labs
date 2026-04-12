@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
         <a href="#" className="flex items-center gap-2 group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <img src={abhinavanLogo} alt="Abhinavan" className="h-8 w-8 object-contain transition-transform duration-300 group-hover:scale-110" />
-          <span className="text-lg font-bold tracking-wide text-foreground">ABHINAVAN</span>
+          <span className="font-display text-lg font-bold tracking-[-0.03em] text-foreground">ABHINAVAN</span>
         </a>
 
         {/* Desktop */}
@@ -48,7 +48,7 @@ const Navbar = () => {
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+              className="px-3 py-2 text-sm font-sans font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
             >
               {link.label}
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full" />
@@ -56,7 +56,7 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => handleClick("#contact")}
-            className="ml-3 px-5 py-2 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity glow-blue"
+            className="ml-3 px-5 py-2 text-sm type-button bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity glow-blue"
           >
             Collaborate
           </button>
@@ -79,14 +79,14 @@ const Navbar = () => {
               <button
                 key={link.href}
                 onClick={() => handleClick(link.href)}
-                className="py-3 text-sm font-medium text-muted-foreground hover:text-foreground text-left transition-colors"
+                className="py-3 text-sm font-sans font-medium text-muted-foreground hover:text-foreground text-left transition-colors"
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={() => handleClick("#contact")}
-              className="mt-2 px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-lg"
+              className="mt-2 px-5 py-2.5 text-sm type-button bg-primary text-primary-foreground rounded-lg"
             >
               Collaborate
             </button>

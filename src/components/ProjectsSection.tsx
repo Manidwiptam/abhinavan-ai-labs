@@ -27,8 +27,8 @@ const ProjectsSection = () => {
     <section id="projects" className="section-padding relative">
       <div className="container mx-auto max-w-6xl">
         <RevealSection>
-          <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">Our Work</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <p className="type-eyebrow mb-3">Our Work</p>
+          <h2 className="type-section-heading mb-6">
             Project <span className="text-gradient">Showcase</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mb-10">
@@ -42,7 +42,7 @@ const ProjectsSection = () => {
               <button
                 key={f}
                 onClick={() => setActive(f)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 rounded-lg text-sm font-sans font-medium transition-all duration-300 ${
                   active === f
                     ? "bg-primary text-primary-foreground glow-blue"
                     : "glass-card text-muted-foreground hover:text-foreground"
@@ -60,17 +60,17 @@ const ProjectsSection = () => {
               <div className="glass-card-hover p-6 group">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 text-xs font-mono bg-primary/10 text-primary rounded-md">
+                    <span key={tag} className="px-2.5 py-1 type-tech-chip bg-primary/10 text-primary rounded-md">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-foreground">{project.title}</h3>
+                <h3 className="type-card-title text-xl mb-3 text-foreground">{project.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.desc}</p>
-                <p className="text-xs font-mono text-primary/70 mb-4">{project.metrics}</p>
+                <p className="type-tech-chip text-primary/70 mb-4">{project.metrics}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tech.map((t) => (
-                    <span key={t} className="px-2 py-1 text-xs bg-muted rounded-md text-muted-foreground">{t}</span>
+                    <span key={t} className="px-2 py-1 type-tech-chip bg-muted rounded-md text-muted-foreground">{t}</span>
                   ))}
                 </div>
                 <div className="flex gap-3">
@@ -78,7 +78,7 @@ const ProjectsSection = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 text-sm glass-card hover:border-primary/40 text-foreground transition-colors rounded-lg"
+                    className="flex items-center gap-2 px-4 py-2 text-sm glass-card hover:border-primary/40 text-foreground transition-colors rounded-lg type-button"
                   >
                     <Github size={16} /> GitHub
                   </a>
@@ -86,7 +86,7 @@ const ProjectsSection = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+                    className="flex items-center gap-2 px-4 py-2 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity type-button"
                   >
                     <ExternalLink size={16} /> Live Demo
                   </a>

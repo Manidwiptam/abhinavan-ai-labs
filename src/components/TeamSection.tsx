@@ -38,8 +38,8 @@ const TeamSection = () => (
   <section id="team" className="section-padding relative">
     <div className="container mx-auto max-w-6xl">
       <RevealSection>
-        <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase">The Builders</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <p className="type-eyebrow mb-3">The Builders</p>
+        <h2 className="type-section-heading mb-6">
           Meet <span className="text-gradient">Team Abhinavan</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mb-14">
@@ -82,13 +82,13 @@ const TeamSection = () => (
 
               {/* Info */}
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-1 text-foreground">{m.name}</h3>
-                <p className="text-xs font-mono text-primary mb-4 uppercase tracking-wider">{m.role}</p>
+                <h3 className="type-card-title text-xl mb-1 text-foreground">{m.name}</h3>
+                <p className="type-tech-chip text-primary mb-4 uppercase">{m.role}</p>
                 <div className="flex flex-wrap gap-2">
                   {m.expertise.map((e) => (
                     <span
                       key={e}
-                      className="text-[10px] px-2.5 py-1 rounded-full border border-border text-muted-foreground"
+                      className="type-tech-chip px-2.5 py-1 rounded-full border border-border text-muted-foreground"
                     >
                       {e}
                     </span>

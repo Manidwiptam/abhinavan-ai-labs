@@ -37,7 +37,7 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   }, [target]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-black text-gradient">
+    <div ref={ref} className="font-display text-4xl md:text-5xl font-extrabold tracking-[-0.05em] text-gradient">
       {count}{suffix}
     </div>
   );
@@ -47,8 +47,8 @@ const StatsSection = () => (
   <section id="stats" className="section-padding relative">
     <div className="container mx-auto max-w-6xl">
       <RevealSection>
-        <p className="text-primary font-mono text-sm mb-3 tracking-widest uppercase text-center">Impact</p>
-        <h2 className="text-3xl md:text-5xl font-bold mb-14 text-center">
+        <p className="type-eyebrow mb-3 text-center">Impact</p>
+        <h2 className="type-section-heading mb-14 text-center">
           By the <span className="text-gradient">Numbers</span>
         </h2>
       </RevealSection>
@@ -58,7 +58,7 @@ const StatsSection = () => (
           <RevealSection key={stat.label} delay={i * 100}>
             <div className="glass-card-hover p-8 text-center">
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <p className="text-sm text-muted-foreground mt-2 font-medium">{stat.label}</p>
+              <p className="type-tech-chip text-muted-foreground mt-3 uppercase">{stat.label}</p>
             </div>
           </RevealSection>
         ))}

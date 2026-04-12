@@ -42,7 +42,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
           }}
         />
       </div>
-      <p className="mt-4 font-mono text-xs tracking-[0.3em] text-primary uppercase">
+      <p className="mt-4 type-eyebrow">
         Initializing Abhinavan Lab
       </p>
     </div>

@@ -8,7 +8,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img src={abhinavanLogo} alt="Abhinavan" className="h-8 w-8 object-contain" />
-            <span className="text-lg font-bold text-foreground">ABHINAVAN</span>
+            <span className="font-display text-lg font-bold tracking-[-0.03em] text-foreground">ABHINAVAN</span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Innovation, relentless building, futuristic intelligence, and technical mastery.
@@ -16,13 +16,13 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-foreground mb-4">Quick Links</h4>
+          <h4 className="font-display text-sm font-semibold tracking-[-0.02em] text-foreground mb-4">Quick Links</h4>
           <div className="flex flex-col gap-2">
             {["About", "Projects", "Hackathons", "Team", "Contact"].map((link) => (
               <button
                 key={link}
                 onClick={() => document.querySelector(`#${link.toLowerCase()}`)?.scrollIntoView({ behavior: "smooth" })}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+                className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors text-left"
               >
                 {link}
               </button>
@@ -31,7 +31,7 @@ const Footer = () => (
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-foreground mb-4">Connect</h4>
+          <h4 className="font-display text-sm font-semibold tracking-[-0.02em] text-foreground mb-4">Connect</h4>
           <div className="flex gap-3">
             <a href="https://github.com/Soumya03007" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
               <Github size={18} />
