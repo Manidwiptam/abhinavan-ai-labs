@@ -82,6 +82,18 @@
   }
 }
 
+@layer base {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+  /* Exceptions */
+  button, [role="button"], .btn, input, textarea, select, a {
+    cursor: pointer !important;
+  }
+}
+
 @layer utilities {
   .type-eyebrow {
     @apply font-mono text-[0.72rem] md:text-xs font-medium uppercase tracking-[0.28em] text-primary;
@@ -164,7 +176,7 @@
   }
 
   .section-padding {
-    @apply py-24 md:py-32 px-4 md:px-8;
+    @apply py-16 md:py-20 px-4 md:px-8;
   }
 
   .timeline-beam {

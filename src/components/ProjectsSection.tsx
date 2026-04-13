@@ -11,7 +11,7 @@ const projects = [
     title: "Adaptive RL Reliability",
     desc: "A production-inspired Reinforcement Learning environment where an RL agent acts as an auto-scaling SRE engineer, learning to make decisions for live services under fluctuating traffic, failure bursts, CPU saturation, and latency peaks.",
     tags: ["RL", "Research", "Hackathons"],
-    tech: ["Python", "OpenAI Gym", "PyTorch", "Streamlit"],
+    tech: ["Python", "OpenENV Environment", "PyTorch", "TorchRL"],
     github: "https://github.com/Soumya03007/adaptive-RL-reliability.git",
     demo: "https://huggingface.co/spaces/Soumya007/Adaptive-RL-Environment",
     metrics: "Autonomous SRE · SLO-aware · Scale up/down/noop decisions",
