@@ -128,7 +128,7 @@ const ContactSection = () => {
         {status === 'error' && (
           <RevealSection delay={200}>
             <div className="mt-8 flex items-center justify-center gap-2 rounded-xl bg-destructive/10 p-4 text-destructive border border-destructive/30">
-              Failed to send. Please check EmailJS config and try again.
+
             </div>
           </RevealSection>
         )}

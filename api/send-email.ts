@@ -1,39 +1,37 @@
 import nodemailer from 'nodemailer';
-import cors from 'cors';
 
-const handler = async (req: Request, res: Response) => {
-  // CORS middleware
-  cors()(req, res, async () => {
-    if (req.method !== 'POST') {
-      res.status(405).json({ error: 'Method not allowed' });
-      return;
-    }
+export default async function (req, res) {
+  if (req.method !== 'POST') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
 
-    try {
-      const { name, email, message } = await req.json();
+  try {
+    const { name, email, message } = req.body;
 
-      const transporter = nodemailer.createTransporter({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER || 'your-gmail@gmail.com',
-          pass: process.env.EMAIL_PASS || 'your-app-password',
-        },
-      });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-      const mailOptions = {
-        from: email,
-        to: 'team.abhinavan@gmail.com',
-        subject: `New Contact from ${name}`,
-        text: `Message from ${name} (${email}):\n\n${message}`,
-      };
+    await transporter.sendMail({
+      from: email,
+      to: 'team.abhinavan@gmail.com',
+      subject: `New Contact from ${name}`,
+      html: `
+        <h3>New Message from ${name}</h3>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `,
+    });
 
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ success: true });
-    } catch (error) {
-      console.error('Email error:', error);
-      res.status(500).json({ error: 'Failed to send email' });
-    }
-  });
-};
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Email error:', error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+}
 
-export { handler as POST };
