@@ -45,7 +45,7 @@ const AboutSection = () => (
         {cards.map((card, i) => (
           <RevealSection key={card.title} delay={i * 100}>
             <MotionCard className="p-6 h-full group">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/12 transition-colors group-hover:bg-secondary/18">
                 <card.icon size={24} className="text-primary" />
               </div>
               <h3 className="type-card-title text-lg mb-2 text-foreground">{card.title}</h3>

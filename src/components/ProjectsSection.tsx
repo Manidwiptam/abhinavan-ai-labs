@@ -46,8 +46,8 @@ const ProjectsSection = () => {
                 onClick={() => setActive(f)}
                 className={`px-4 py-2 rounded-lg text-sm font-sans font-medium transition-all duration-300 ${
                   active === f
-                    ? "bg-primary text-primary-foreground glow-blue"
-                    : "glass-card text-muted-foreground hover:text-foreground"
+                    ? "neural-button"
+                    : "glass-card text-muted-foreground hover:border-secondary/40 hover:text-foreground"
                 }`}
               >
                 {f}
@@ -69,7 +69,7 @@ const ProjectsSection = () => {
                 </div>
                 <h3 className="type-card-title text-xl mb-3 text-foreground">{project.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.desc}</p>
-                <p className="type-tech-chip text-primary/70 mb-4">{project.metrics}</p>
+                <p className="premium-text type-tech-chip mb-4">{project.metrics}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tech.map((t) => (
                     <TechChip key={t} className="px-2 py-1 text-muted-foreground type-tech-chip">
@@ -90,7 +90,7 @@ const ProjectsSection = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 text-sm bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity type-button"
+                    className="neural-button flex items-center gap-2 rounded-lg px-4 py-2 text-sm type-button"
                   >
                     <ExternalLink size={16} /> Live Demo
                   </a>

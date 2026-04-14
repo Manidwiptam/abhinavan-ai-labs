@@ -22,19 +22,19 @@ const AICore = () => {
         transition={reduceMotion ? undefined : { ...orbitTransition, duration: 18 }}
       />
       <motion.div
-        className="absolute inset-[10%] rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.1),rgba(59,130,246,0.06),transparent_70%)] blur-2xl"
+        className="absolute inset-[10%] rounded-full bg-[radial-gradient(circle,rgba(34,211,238,0.12),rgba(139,92,246,0.08),transparent_70%)] blur-2xl"
         animate={reduceMotion ? undefined : { scale: [0.96, 1.04, 0.96], opacity: [0.55, 0.8, 0.55] }}
         transition={reduceMotion ? undefined : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
-          className="relative h-44 w-44 rounded-full border border-primary/30 bg-[radial-gradient(circle_at_35%_30%,rgba(125,211,252,0.95),rgba(59,130,246,0.5)_30%,rgba(15,23,42,0.2)_62%,rgba(2,6,23,0)_80%)] shadow-[0_0_80px_rgba(59,130,246,0.28)] lg:h-56 lg:w-56"
+          className="relative h-44 w-44 rounded-full border border-primary/30 bg-[radial-gradient(circle_at_35%_30%,rgba(248,250,252,0.95),rgba(34,211,238,0.7)_26%,rgba(139,92,246,0.42)_54%,rgba(8,11,20,0.18)_72%,rgba(8,11,20,0)_84%)] shadow-[0_0_80px_rgba(34,211,238,0.24)] lg:h-56 lg:w-56"
           animate={reduceMotion ? undefined : { y: [0, -8, 0], rotate: [0, 6, 0, -6, 0] }}
           transition={reduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="absolute inset-[18%] rounded-full border border-white/10" />
-          <div className="absolute inset-[32%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.9),rgba(125,211,252,0.6),rgba(56,189,248,0))] blur-md" />
+          <div className="absolute inset-[32%] rounded-full bg-[radial-gradient(circle,rgba(248,250,252,0.92),rgba(34,211,238,0.55),rgba(139,92,246,0))] blur-md" />
         </motion.div>
       </div>
 
@@ -51,7 +51,7 @@ const AICore = () => {
               height: `${size}px`,
               marginLeft: `${-size / 2}px`,
               marginTop: `${-size / 2}px`,
-              boxShadow: "0 0 18px rgba(56, 189, 248, 0.45)",
+              boxShadow: "0 0 18px rgba(34, 211, 238, 0.4)",
             }}
             animate={
               reduceMotion

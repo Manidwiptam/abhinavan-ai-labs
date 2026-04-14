@@ -2,7 +2,7 @@ import { Github, Linkedin } from "lucide-react";
 import abhinavanLogo from "@/assets/abhinavan-loader.png";
 
 const Footer = () => (
-  <footer className="border-t border-border bg-background/50 backdrop-blur-sm">
+  <footer className="border-t border-border bg-background/60 backdrop-blur-sm">
     <div className="container mx-auto max-w-6xl py-12 px-4 md:px-8">
       <div className="grid md:grid-cols-3 gap-8">
         <div>
@@ -22,7 +22,7 @@ const Footer = () => (
               <button
                 key={link}
                 onClick={() => document.querySelector(`#${link.toLowerCase()}`)?.scrollIntoView({ behavior: "smooth" })}
-                className="text-sm font-sans text-muted-foreground hover:text-foreground transition-colors text-left"
+                className="text-left text-sm font-sans text-muted-foreground transition-colors hover:text-primary"
               >
                 {link}
               </button>
@@ -33,10 +33,10 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-sm font-semibold tracking-[-0.02em] text-foreground mb-4">Connect</h4>
           <div className="flex gap-3">
-            <a href="https://github.com/Soumya03007" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://github.com/Soumya03007" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg glass-card text-muted-foreground transition-colors hover:text-primary">
               <Github size={18} />
             </a>
-            <a href="https://www.linkedin.com/in/soumyadeeppaul7/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://www.linkedin.com/in/soumyadeeppaul7/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg glass-card text-muted-foreground transition-colors hover:text-primary">
               <Linkedin size={18} />
             </a>
           </div>

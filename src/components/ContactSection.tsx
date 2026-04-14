@@ -67,7 +67,7 @@ const ContactSection = () => {
                     name="from_name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-card/55 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20"
                     placeholder="Your name"
                   />
                 </div>
@@ -79,7 +79,7 @@ const ContactSection = () => {
                     name="from_email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                    className="w-full rounded-xl border border-border bg-card/55 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -92,14 +92,14 @@ const ContactSection = () => {
                   rows={5}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-border bg-muted/50 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/50 focus:outline-none"
+                  className="w-full resize-none rounded-xl border border-border bg-card/55 px-4 py-3 font-sans text-foreground placeholder:text-muted-foreground transition-colors focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20"
                   placeholder="Tell us about your idea or project..."
                 />
               </div>
               <button
                 disabled={loading}
                 type="submit"
-                className="flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-primary-foreground type-button transition-opacity hover:opacity-90 glow-blue disabled:opacity-50 disabled:cursor-not-allowed"
+                className="neural-button flex items-center gap-2 rounded-xl px-8 py-3.5 type-button disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {loading ? (
                   <>
@@ -119,7 +119,7 @@ const ContactSection = () => {
 
         {status === 'success' && (
           <RevealSection delay={200}>
-            <div className="mt-8 flex items-center justify-center gap-2 rounded-xl bg-green-500/10 p-4 text-green-400 border border-green-500/30">
+            <div className="mt-8 flex items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/10 p-4 text-foreground shadow-[0_0_24px_rgba(34,211,238,0.08)]">
               <CheckCircle size={20} />
               <span>Message sent successfully! We'll get back to you soon.</span>
             </div>
@@ -127,7 +127,7 @@ const ContactSection = () => {
         )}
         {status === 'error' && (
           <RevealSection delay={200}>
-            <div className="mt-8 flex items-center justify-center gap-2 rounded-xl bg-destructive/10 p-4 text-destructive border border-destructive/30">
+            <div className="mt-8 flex items-center justify-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-destructive">
 
             </div>
           </RevealSection>

@@ -61,10 +61,10 @@ const TechChip = ({
             }
       }
       transition={{ type: "spring", stiffness: 220, damping: 18, mass: 0.6 }}
-      className={`group relative overflow-hidden rounded-xl border border-primary/15 bg-background/35 px-3 py-2 text-left backdrop-blur-xl ${className}`}
+      className={`group relative overflow-hidden rounded-xl border border-primary/15 bg-card/45 px-3 py-2 text-left backdrop-blur-xl ${className}`}
       style={{ transformStyle: "preserve-3d" }}
     >
-      <span className="pointer-events-none absolute inset-0 rounded-xl border border-primary/0 transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.18)]" />
+      <span className="pointer-events-none absolute inset-0 rounded-xl border border-primary/0 transition-all duration-300 group-hover:border-secondary/60 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.16),0_0_34px_rgba(139,92,246,0.14),0_0_10px_rgba(25,118,210,0.14)]" />
       {ripples.map((ripple) => (
         <span
           key={ripple.id}

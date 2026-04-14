@@ -38,7 +38,7 @@ const CursorWithThinTrail = () => {
       {trailRef.current.map((dot, i) => (
         <motion.div
           key={i}
-          className="fixed w-[2px] h-[2px] bg-gradient-to-r from-blue-400 to-purple-400 rounded-full pointer-events-none z-[98]"
+          className="fixed z-[98] h-[2px] w-[2px] rounded-full bg-gradient-to-r from-primary to-secondary pointer-events-none"
           style={{
             left: dot.x,
             top: dot.y,
@@ -50,14 +50,14 @@ const CursorWithThinTrail = () => {
       ))}
       {/* Ring */}
       <motion.div
-        className="fixed w-10 h-10 border-2 border-blue-400/60 rounded-full pointer-events-none z-99 opacity-70"
+        className="fixed z-99 h-10 w-10 rounded-full border-2 border-primary/60 pointer-events-none opacity-70"
         style={{ left: mouse.x - 20, top: mouse.y - 20 }}
         animate={{ scale: 1.1 }}
         transition={{ duration: 0.15 }}
       />
       {/* Center dot */}
       <motion.div
-        className="fixed w-1.5 h-1.5 bg-blue-400 rounded-full pointer-events-none z-99 shadow-lg"
+        className="fixed z-99 h-1.5 w-1.5 rounded-full bg-primary pointer-events-none shadow-[0_0_14px_rgba(34,211,238,0.55)]"
         style={{ left: mouse.x - 0.75, top: mouse.y - 0.75 }}
       />
     </>

@@ -82,6 +82,7 @@ const CursorRing = () => {
           top: '-2rem',
           x,
           y,
+          boxShadow: "0 0 24px rgba(34, 211, 238, 0.18), 0 0 42px rgba(139, 92, 246, 0.12)",
         }}
         animate={{ scale: 1.1 }}
         transition={{ duration: 0.1 }}
@@ -94,6 +95,7 @@ const CursorRing = () => {
           top: '-0.25rem',
           x,
           y,
+          boxShadow: "0 0 14px rgba(34, 211, 238, 0.45)",
         }}
       />
     </>

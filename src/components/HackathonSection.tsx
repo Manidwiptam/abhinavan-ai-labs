@@ -38,16 +38,16 @@ const HackathonSection = () => {
             <RevealSection key={h.name} delay={i * 150}>
               <div className={`relative mb-12 flex flex-col items-start gap-6 md:flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                 <motion.div
-                  className="absolute left-4 top-6 z-10 h-4 w-4 -translate-x-1/2 rounded-full bg-primary glow-blue md:left-1/2"
+                  className="absolute left-4 top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary glow-blue md:left-1/2"
                   animate={
                     reduceMotion
                       ? undefined
                       : {
                           scale: [1, 1.28, 1],
                           boxShadow: [
-                            "0 0 12px rgba(59,130,246,0.4)",
-                            "0 0 28px rgba(56,189,248,0.75)",
-                            "0 0 12px rgba(59,130,246,0.4)",
+                            "0 0 12px rgba(34,211,238,0.4)",
+                            "0 0 28px rgba(139,92,246,0.6)",
+                            "0 0 12px rgba(34,211,238,0.4)",
                           ],
                         }
                   }
@@ -64,7 +64,7 @@ const HackathonSection = () => {
                     <h3 className="type-card-title mb-2 text-xl text-foreground">{h.name}</h3>
                     <p className="mb-1 text-sm text-muted-foreground">{h.organizer}</p>
                     <p className="mb-3 text-sm leading-relaxed text-muted-foreground">{h.problem}</p>
-                    <p className="mb-3 text-sm font-medium text-primary">{h.achievement}</p>
+                    <p className="premium-text mb-3 text-sm font-medium">{h.achievement}</p>
                     <div className="flex flex-wrap gap-2">
                       {h.tech.map((t) => (
                         <TechChip key={t} className="px-2 py-1 text-primary type-tech-chip">
