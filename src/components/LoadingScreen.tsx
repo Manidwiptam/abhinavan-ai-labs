@@ -33,12 +33,12 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         alt="Abhinavan"
         className="w-24 h-24 mb-8 animate-pulse object-contain"
       />
-      <div className="w-48 h-1 bg-muted rounded-full overflow-hidden">
+      <div className="h-1 w-48 overflow-hidden rounded-full bg-card">
         <div
-          className="h-full bg-primary rounded-full transition-none"
+          className="neural-gradient h-full rounded-full transition-none"
           style={{
             width: `${progress * 100}%`,
-            boxShadow: "0 0 10px hsl(var(--primary))",
+            boxShadow: "0 0 14px rgba(34,211,238,0.35), 0 0 26px rgba(139,92,246,0.18)",
           }}
         />
       </div>

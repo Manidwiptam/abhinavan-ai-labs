@@ -35,7 +35,7 @@ const CursorSpotlight = () => {
         x,
         y,
         background:
-          "radial-gradient(circle, rgba(56,189,248,0.18) 0%, rgba(99,102,241,0.12) 35%, rgba(129,140,248,0.08) 52%, rgba(15,23,42,0) 72%)",
+          "radial-gradient(circle, rgba(34,211,238,0.18) 0%, rgba(139,92,246,0.14) 35%, rgba(59,130,246,0.09) 52%, rgba(8,11,20,0) 72%)",
         filter: "blur(22px)",
         mixBlendMode: "screen",
       }}

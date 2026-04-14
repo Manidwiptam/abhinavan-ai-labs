@@ -44,7 +44,7 @@ const AnimatedCounter = ({ target, suffix }: { target: number; suffix: string })
   }, [inView, reduceMotion, target]);
 
   return (
-    <motion.div ref={ref} className="font-display text-4xl font-extrabold tracking-[-0.05em] text-gradient md:text-5xl">
+    <motion.div ref={ref} className="premium-text font-display text-4xl font-extrabold tracking-[-0.05em] md:text-5xl">
       {count}{suffix}
     </motion.div>
   );

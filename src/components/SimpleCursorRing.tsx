@@ -45,7 +45,7 @@ const SimpleCursorRing = () => {
       {trail.current.map((dot, i) => (
         <div
           key={i}
-          className="fixed z-[49] w-1 h-1 bg-blue-400 rounded-full pointer-events-none"
+          className="fixed z-[49] h-1 w-1 rounded-full bg-primary pointer-events-none"
           style={{
             left: mousePos.x + dot.x - 0.25,
             top: mousePos.y + dot.y - 0.25,
@@ -54,7 +54,7 @@ const SimpleCursorRing = () => {
         />
       ))}
       <motion.div
-        className="fixed w-12 h-12 border border-blue-400/50 rounded-full pointer-events-none z-50 opacity-60"
+        className="fixed z-50 h-12 w-12 rounded-full border border-primary/50 pointer-events-none opacity-60"
         style={{
           left: mousePos.x - 24,
           top: mousePos.y - 24,
@@ -63,7 +63,7 @@ const SimpleCursorRing = () => {
         transition={{ duration: 0.2 }}
       />
       <motion.div
-        className="fixed w-2 h-2 bg-blue-400 rounded-full pointer-events-none z-50 opacity-90"
+        className="fixed z-50 h-2 w-2 rounded-full bg-primary pointer-events-none opacity-90"
         style={{
           left: mousePos.x - 1,
           top: mousePos.y - 1,

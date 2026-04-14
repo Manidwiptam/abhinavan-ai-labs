@@ -118,9 +118,9 @@ const ParticleGrid = () => {
         const alpha = 0.2 * heroBoost * node.energy;
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.size * heroBoost, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(96, 165, 250, ${alpha})`;
+        ctx.fillStyle = `rgba(34, 211, 238, ${alpha})`;
         ctx.shadowBlur = 14;
-        ctx.shadowColor = "rgba(56, 189, 248, 0.45)";
+        ctx.shadowColor = "rgba(139, 92, 246, 0.35)";
         ctx.fill();
       }
 

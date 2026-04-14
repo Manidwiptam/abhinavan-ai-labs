@@ -12,12 +12,12 @@ const HeroSection = () => {
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(59,130,246,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.5) 1px, transparent 1px)",
+            "linear-gradient(rgba(34,211,238,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.45) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
 
-      <div className="absolute left-[12%] top-[18%] h-80 w-80 rounded-full bg-primary/10 blur-[140px]" />
+      <div className="absolute left-[12%] top-[18%] h-80 w-80 rounded-full bg-primary/12 blur-[140px]" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col items-center justify-center gap-12 text-center">
         <div>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <button
                 onClick={() => handleScroll("#projects")}
-                className="group flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-primary-foreground type-button transition-all duration-300 hover:opacity-90 glow-blue"
+                className="group neural-button flex items-center gap-2 rounded-xl px-8 py-3.5 type-button"
               >
                 <Zap size={18} />
                 Explore Projects
@@ -56,13 +56,13 @@ const HeroSection = () => {
               </button>
               <button
                 onClick={() => handleScroll("#team")}
-                className="flex items-center gap-2 rounded-xl glass-card px-8 py-3.5 text-foreground type-button transition-all duration-300 hover:border-primary/40"
+                className="flex items-center gap-2 rounded-xl glass-card px-8 py-3.5 text-foreground type-button transition-all duration-300 hover:border-secondary/50"
               >
                 Meet the Team
               </button>
               <button
                 onClick={() => handleScroll("#contact")}
-                className="flex items-center gap-2 rounded-xl border border-border px-8 py-3.5 text-muted-foreground type-button transition-all duration-300 hover:border-primary/40 hover:text-foreground"
+                className="flex items-center gap-2 rounded-xl border border-border bg-card/30 px-8 py-3.5 text-muted-foreground type-button transition-all duration-300 hover:border-primary/50 hover:text-foreground"
               >
                 Collaborate With Us
               </button>

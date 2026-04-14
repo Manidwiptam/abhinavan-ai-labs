@@ -65,7 +65,7 @@ const TeamSection = () => (
                     href={m.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-foreground/10 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary"
+                    className="rounded-full bg-card/70 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
                   >
                     <Github size={18} />
                   </a>
@@ -73,7 +73,7 @@ const TeamSection = () => (
                     href={m.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-foreground/10 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary"
+                    className="rounded-full bg-card/70 p-2.5 backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
                   >
                     <Linkedin size={18} />
                   </a>
@@ -82,7 +82,7 @@ const TeamSection = () => (
 
               <div className="p-6">
                 <h3 className="type-card-title text-xl mb-1 text-foreground">{m.name}</h3>
-                <p className="type-tech-chip mb-4 uppercase text-primary">{m.role}</p>
+                <p className="type-tech-chip mb-4 uppercase premium-text">{m.role}</p>
                 <div className="flex flex-wrap gap-2">
                   {m.expertise.map((e) => (
                     <TechChip key={e} className="rounded-full px-2.5 py-1 text-muted-foreground type-tech-chip">
