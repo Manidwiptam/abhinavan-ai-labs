@@ -64,10 +64,8 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    background-image:
-      radial-gradient(circle at 18% 18%, rgba(34, 211, 238, 0.1), transparent 28%),
-      radial-gradient(circle at 82% 16%, rgba(139, 92, 246, 0.1), transparent 26%),
-      linear-gradient(180deg, rgba(8, 11, 20, 0.98), rgba(8, 11, 20, 1));
+    background:
+      linear-gradient(180deg, rgba(8, 11, 20, 0.985), rgba(8, 11, 20, 1));
     font-family: var(--font-body);
     line-height: 1.65;
     text-rendering: optimizeLegibility;
@@ -331,6 +329,12 @@
     animation: none;
     transition: none;
   }
+
+  .scroll-reactive-bg__haze,
+  .scroll-reactive-bg__bloom {
+    filter: blur(8px);
+    opacity: 0.42;
+  }
 }
 
 /* Scrollbar */
@@ -349,7 +353,7 @@
 }
 
 /* Scroll progress bar */
-  .scroll-progress {
+.scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
@@ -358,6 +362,48 @@
   z-index: 9999;
   transition: width 0.1s;
 }
+
+.scroll-reactive-bg,
+.scroll-reactive-bg__base,
+.scroll-reactive-bg__haze,
+.scroll-reactive-bg__bloom,
+.scroll-reactive-bg__vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scroll-reactive-bg {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.scroll-reactive-bg__base,
+.scroll-reactive-bg__haze,
+.scroll-reactive-bg__bloom,
+.scroll-reactive-bg__vignette {
+  transform: translateZ(0);
+  will-change: opacity, background-image, transform;
+}
+
+.scroll-reactive-bg__base {
+  opacity: 1;
+}
+
+.scroll-reactive-bg__haze {
+  opacity: 0.72;
+  filter: blur(14px);
+}
+
+.scroll-reactive-bg__bloom {
+  opacity: 0.96;
+  filter: blur(18px);
+}
+
+.scroll-reactive-bg__vignette {
+  opacity: 1;
+}
+
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .neural-cursor,
@@ -522,4 +568,17 @@
   50% {
     filter: brightness(1.24);
   }
+}
+
+@media (max-width: 767px) {
+  .scroll-reactive-bg__haze {
+    opacity: 0.46;
+    filter: blur(10px);
+  }
+
+  .scroll-reactive-bg__bloom {
+    opacity: 0.5;
+    filter: blur(12px);
+  }
+
 }
